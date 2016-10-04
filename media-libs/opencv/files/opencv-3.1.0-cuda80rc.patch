@@ -1,0 +1,12 @@
+--- opencv-3.1.0/modules/cudalegacy/src/graphcuts.cpp	2015-12-18 16:02:16.000000000 +0100
++++ opencv-3.1.0/modules/cudalegacy/src/graphcuts.cpp	2016-09-25 01:00:45.490160125 +0200
+@@ -42,7 +42,7 @@
+ 
+ #include "precomp.hpp"
+ 
+-#if !defined (HAVE_CUDA) || defined (CUDA_DISABLER)
++#if !defined (HAVE_CUDA) || defined (CUDA_DISABLER) || (CUDART_VERSION >= 8000)
+ 
+ void cv::cuda::graphcut(GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, Stream&) { throw_no_cuda(); }
+ void cv::cuda::graphcut(GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, Stream&) { throw_no_cuda(); }
+
