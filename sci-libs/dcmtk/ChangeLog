@@ -1,0 +1,30 @@
+*dcmtk-3.6.1_pre20160216-r1 (23 Jun 2016)
+
+  23 Jun 2016;  <gerddie@gentoo.org> +dcmtk-3.6.1_pre20160216-r1.ebuild:
+  sci-libs/dcmtk: Add iconv use flag to compile with iconv enabled
+
+  22 Mar 2016;  <gerddie@gentoo.org> dcmtk-3.6.1_pre20160216.ebuild:
+  sci-libs/dcmtk: umask the new version for testing
+
+  22 Mar 2016;  <gerddie@gentoo.org> +files/soversion_abi.patch,
+  dcmtk-3.6.1_pre20160216.ebuild:
+  sci-libs/dcmtk: Add patch to create library name based on so-version
+
+  01 Mar 2016;  <gerddie@gentoo.org> dcmtk-3.6.1_pre20160216.ebuild:
+  sci-libs/dcmtk:          mask latest version, because the update doesn't go
+  smoothly
+
+*dcmtk-3.6.1_pre20160216 (01 Mar 2016)
+
+  01 Mar 2016;  <gerddie@gentoo.org> +dcmtk-3.6.1_pre20160216.ebuild:
+  sci-libs/dcmtk:          Add emuild for new upstream shapshot
+
+  01 Mar 2016;  <gerddie@gentoo.org> dcmtk-3.6.1_pre20150924.ebuild,
+  metadata.xml:
+  sci-libs/dcmtk:    point the sur-uri to Debian, because upstream pulled the
+  tarball
+
+*dcmtk-3.6.1_pre20150924 (29 Oct 2015)
+
+  29 Oct 2015;  <gw.fossdev@gmail.com> dcmtk-3.6.1_pre20150924:
+  Initial ebuild
