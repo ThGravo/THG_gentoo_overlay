@@ -1,0 +1,11 @@
+--- clapack-3.2.1-CMAKE/SRC/CMakeLists.txt	2017-06-07 15:55:02.943610165 +0200
++++ CMakeLists.txt	2017-06-07 15:54:37.095608764 +0200
+@@ -384,7 +384,7 @@
+ add_library(clapack SHARED ${ALLOBJ} ${ALLXOBJ})
+ target_link_libraries(clapack ${BLAS_LIBRARIES} f2c m)
+ if(BLAS_LIBRARY_DIRS)
+-	SET_TARGET_PROPERTIES(clapack PROPERTIES LINK_FLAGS ${LINK_FLAGS} -L"${BLAS_LIBRARY_DIRS}")
++	SET_TARGET_PROPERTIES(clapack PROPERTIES LINK_FLAGS "${LINK_FLAGS}" -L"${BLAS_LIBRARY_DIRS}")
+ endif()
+ set_target_properties(clapack PROPERTIES SOVERSION "${CLAPACK_VERSION}")
+
