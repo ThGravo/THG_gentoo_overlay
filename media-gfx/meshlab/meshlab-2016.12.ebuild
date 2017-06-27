@@ -28,7 +28,7 @@ DEPEND="app-arch/bzip2
 	media-gfx/jhead
 	media-libs/glew
 	media-libs/qhull
-	media-libs/lib3ds
+	=media-libs/lib3ds-1*
 	media-libs/openctm
 	sci-libs/levmar
 	sys-libs/libunwind
@@ -36,13 +36,24 @@ DEPEND="app-arch/bzip2
 	virtual/glu"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}/src"
+S="${WORKDIR}/${P}/src"
 
 src_prepare() {
 	cd "${S}"
 	rm -fr external/{inc,lib}
-	mv plugins_plugins_experimental/io_TXT/io_txt.pro plugins_experimental/io_TXT/io_TXT.pro
-	cd "${WORKDIR}"
+	mv plugins_experimental/io_TXT/io_txt.pro plugins_experimental/io_TXT/io_TXT.pro
+
+	dos2unix meshlabplugins/edit_arc3D/edit_arc3D.pro
+	dos2unix meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro
+	dos2unix meshlabplugins/filter_mutualinfoxml/levmarmethods.h
+	dos2unix meshlabplugins/filter_mutualinfoxml/solver.h
+	dos2unix plugins_experimental/edit_mutualcorrs/levmarmethods.h
+	dos2unix plugins_experimental/edit_mutualcorrs/solver.h
+	dos2unix plugins_experimental/filter_mutualglobal/levmarmethods.h
+	dos2unix plugins_experimental/filter_mutualglobal/solver.h
+	dos2unix plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
+
+	#cd "${WORKDIR}"
 	EPATCH_OPTS="--ignore-whitespace" epatch "${FILESDIR}/${PV}"/external.patch \
 		"${FILESDIR}/${PV}"/rpath.patch \
 		"${FILESDIR}/${PV}"/meshlabserver_GLU.patch \

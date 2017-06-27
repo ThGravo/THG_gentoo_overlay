@@ -21,6 +21,8 @@ IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
 	>=dev-cpp/eigen-3.1
+	virtual/blas
+	virtual/lapack
 	dev-libs/boost:=
 	dev-libs/mpfr:0
 	sys-libs/zlib
@@ -65,6 +67,8 @@ src_configure() {
 		-DWITH_LEDA=OFF
 		-DWITH_Eigen3=ON
 		-DWITH_ZLIB=ON
+		-DWITH_LAPACK=ON
+                -DWITH_BLAS=ON
 		-DWITH_GMP="$(usex gmp)"
 		-DWITH_GMPXX="$(usex gmp)"
 		-DWITH_CGAL_Qt5="$(usex qt5)"
