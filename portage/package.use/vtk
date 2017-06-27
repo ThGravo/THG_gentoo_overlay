@@ -1,0 +1,17 @@
+#needs all the 32bit stuff
+sci-libs/vtk -video_cards_nvidia boost gdal imaging qt5 rendering
+# -cg -doc -java -json -kaapi -mpi -mysql -odbc -offscreen -postgres -python -smp -tbb -tcl -theora -tk -views -web -xdmf2
+
+# required by sci-libs/gdal-2.0.3::gentoo
+# required by sci-libs/vtk-7.1.0::cynede[gdal]
+# required by @CC-deps
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.10 minizip
+# required by dev-qt/qtwebkit-5.7.1::gentoo
+# required by sci-libs/vtk-7.1.0::cynede[qt5]
+# required by @CC-deps
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtcore-5.7.1 icu
+

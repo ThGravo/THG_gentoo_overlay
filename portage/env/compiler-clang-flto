@@ -1,0 +1,9 @@
+CC="clang"                            
+CXX="clang++"                         
+CFLAGS="${CFLAGS} -flto"              
+CXXFLAGS="${CXXFLAGS} -flto"          
+LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+
+AR="llvm-ar"
+NM="llvm-nm"
+RANLIB="llvm-ranlib"

@@ -1,0 +1,10 @@
+CC="gcc"
+CXX="g++"
+CFLAGS="-flto -fuse-linker-plugin -march=native -O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+LDFLAGS="${LDFLAGS} ${CFLAGS}"
+AR="gcc-ar"
+NM="gcc-nm"
+RANLIB="gcc-ranlib"
+

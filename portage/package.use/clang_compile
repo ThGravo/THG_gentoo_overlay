@@ -1,0 +1,3 @@
+#=net-libs/webkit-gtk-2.14.2 -introspection -geolocation
+#=gnome-base/nautilus-3.22.1::gentoo -previewer
+#=gnome-base/gnome-3.22.0:2.0::gentoo -accessibility bluetooth -cdr -classic cups extras

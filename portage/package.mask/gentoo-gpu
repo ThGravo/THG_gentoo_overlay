@@ -1,0 +1,4 @@
+=x11-proto/glproto-9999::gentoo-gpu
+net-libs/webkit-gtk::gentoo-gpu
+media-plugins/gst-plugins-vaapi::gentoo-gpu
+=x11-drivers/nvidia-drivers-378.13-r1::gentoo-gpu

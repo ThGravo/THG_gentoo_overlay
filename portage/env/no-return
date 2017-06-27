@@ -1,0 +1,3 @@
+CFLAGS="${CFLAGS} -Wno-return-type"              
+CXXFLAGS="${CXXFLAGS} -Wno-return-type"
+

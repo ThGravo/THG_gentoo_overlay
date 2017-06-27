@@ -1,0 +1,2 @@
+media-libs/opencv -cuda eigen ffmpeg gstreamer gtk jpeg jpeg2k opengl openmp png python threads tiff vaapi webp contrib contrib_cvv contrib_hdf contrib_sfm contrib_xfeatures2d gdal gflags glog gphoto2 lapack openexr qt5 v4l vtk
+media-libs/embree -imagemagick -openexr -png

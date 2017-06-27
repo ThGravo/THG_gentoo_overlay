@@ -1,0 +1,13 @@
+# required by app-office/texmaker-4.5-r1::gentoo[qt5]
+# required by texmaker (argument)
+>=dev-qt/qtsingleapplication-2.6.1_p20150629 qt5
+# required by dev-qt/qtsingleapplication-2.6.1_p20150629::gentoo
+# required by app-office/texmaker-4.5-r1::gentoo[qt5]
+# required by texmaker (argument)
+>=dev-qt/qtlockedfile-2.4.1_p20150629 qt5
+# required by app-office/texmaker-4.5-r1::gentoo[qt5]
+# required by texmaker (argument)
+>=app-text/poppler-0.51.0 qt5
+# required by app-office/texmaker-4.5-r1::gentoo[qt5]
+# required by texmaker (argument)
+>=dev-qt/qtwebkit-5.7.1 printsupport

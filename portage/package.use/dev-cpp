@@ -1,0 +1,3 @@
+# required by sci-libs/ceres-solver (argument)
+>=dev-cpp/glog-0.3.4-r1 gflags
+

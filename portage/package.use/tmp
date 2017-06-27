@@ -1,0 +1,15 @@
+# required by x11-drivers/nvidia-drivers-375.26-r1::gentoo[X]
+# required by x11-base/xorg-drivers-1.18-r1::gentoo[video_cards_nvidia]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.10 abi_x86_32
+# required by app-shells/fish-2.4.0-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre2-10.22 pcre32
+# required by x11-drivers/nvidia-drivers-375.26-r1::gentoo[X]
+# required by x11-base/xorg-drivers-1.18-r1::gentoo[video_cards_nvidia]
+# required by @selected
+# required by @world (argument)
+>=x11-libs/libvdpau-1.1.1 abi_x86_32
+

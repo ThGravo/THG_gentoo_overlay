@@ -1,27 +1,35 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
-inherit cmake-multilib eutils python-any-r1 toolchain-funcs git-r3
+SCM=""
+if [ "${PV#9999}" != "${PV}" ] ; then
+        SCM="git-r3"
+        EGIT_REPO_URI="https://github.com/ceres-solver/ceres-solver.git"
+fi
+inherit ${SCM} cmake-multilib eutils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Nonlinear least-squares minimizer"
 HOMEPAGE="http://ceres-solver.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/ceres-solver/ceres-solver.git"
+if [ "${PV#9999}" != "${PV}" ] ; then
+        SRC_URI=""
+        KEYWORDS=""
+else
+	SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+fi
 
 LICENSE="sparse? ( BSD ) !sparse? ( LGPL-2.1 ) cxsparse? ( BSD )"
 SLOT="0/1"
-KEYWORDS=""
-
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cxsparse c++11 doc examples gflags lapack openmp +schur sparse test"
-REQUIRED_USE="test? ( gflags ) sparse? ( lapack ) doc? ( ${PYTHON_REQUIRED_USE} )"
+
+REQUIRED_USE="test? ( gflags ) sparse? ( lapack ) abi_x86_32? ( !sparse !lapack )"
 
 RDEPEND="
-	dev-cpp/glog[gflags?]
+	dev-cpp/glog[gflags?,${MULTILIB_USEDEP}]
 	cxsparse? ( sci-libs/cxsparse:0= )
 	lapack? ( virtual/lapack )
 	sparse? (
@@ -30,20 +38,25 @@ RDEPEND="
 		sci-libs/ccolamd:0=
 		sci-libs/cholmod:0=
 		sci-libs/colamd:0=
-		sci-libs/spqr:0= )"
+		sci-libs/spqr:0=
+	)"
 
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme )
-	lapack? ( virtual/pkgconfig )"
+	lapack? ( virtual/pkgconfig )
+	${PYTHON_DEPS}"
 
-pkg_setup() {
+pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		if [[ $(tc-getCXX) == *g++* ]] && ! tc-has-openmp; then
 			ewarn "OpenMP is not available in your current selected gcc"
 			die "need openmp capable gcc"
 		fi
 	fi
+}
+
+pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
 
@@ -67,15 +80,15 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_EXAMPLES=OFF
-		$(cmake-utils_use_enable test TESTING)
-		$(cmake-utils_use c++11 CXX11)
-		$(cmake-utils_use doc BUILD_DOCUMENTATION)
-		$(cmake-utils_use gflags GFLAGS)
-		$(cmake-utils_use lapack LAPACK)
-		$(cmake-utils_use openmp OPENMP)
-		$(cmake-utils_use schur SCHUR_SPECIALIZATIONS)
-		$(cmake-utils_use cxsparse CXSPARSE)
-		$(cmake-utils_use sparse SUITESPARSE)
+		-DENABLE_TESTING="$(usex test)"
+		-DCXX11="$(usex c++11)"
+		-DBUILD_DOCUMENTATION="$(usex doc)"
+		-DGFLAGS="$(usex gflags)"
+		-DLAPACK="$(usex lapack)"
+		-DOPENMP="$(usex openmp)"
+		-DSCHUR_SPECIALIZATIONS="$(usex schur)"
+		-DCXSPARSE="$(usex cxsparse)"
+		-DSUITESPARSE="$(usex sparse)"
 	)
 	use sparse || use cxsparse || mycmakeargs+=( -DEIGENSPARSE=ON )
 	cmake-multilib_src_configure

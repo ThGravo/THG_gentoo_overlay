@@ -1,0 +1,3 @@
+app-misc/powerline bash doc extra fish fonts man tmux vim
+media-fonts/powerline-fonts anonymouspro dejavusansmono droidsansmono inconsolata inconsolatadz liberationmono -meslo sourcecodepro terminus_pcf ubuntumono
+>=app-editors/vim-8.0.0106 python

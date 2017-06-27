@@ -1,0 +1,14 @@
+media-libs/assimp
+media-libs/glfw
+media-libs/soil
+media-libs/glm
+virtual/blas
+virtual/lapack
+virtual/cblas
+#dev-lang/ispc
+#media-libs/embree
+dev-libs/pybind11
+dev-python/pytest
+sci-libs/pcl
+media-gfx/openmesh
+sci-libs/matio

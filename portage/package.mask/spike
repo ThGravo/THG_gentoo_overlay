@@ -1,0 +1,5 @@
+=gnome-extra/gnome-shell-extension-weather-20150410::spike
+=gnome-extra/gs-extensions-drop-down-terminal-17::spike
+=x11-drivers/nvidia-drivers-173.14.39::spike
+x11-themes/paper-icon-theme::spike
+x11-themes/paper-gtk-theme::spike

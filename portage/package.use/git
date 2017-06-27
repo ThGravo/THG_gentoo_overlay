@@ -1,0 +1,4 @@
+dev-vcs/git tk subversion
+# mediawiki mediawiki-experimental
+>=dev-vcs/subversion-1.9.5 -dso perl
+

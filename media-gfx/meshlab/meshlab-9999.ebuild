@@ -83,10 +83,11 @@ src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_git-r3_env_setup
+
 	git-r3_fetch "https://github.com/cnr-isti-vclab/vcglib" "refs/heads/devel"
 # "d885a45bbd2cf0cd44b71bc5813532ab7c8885a0"
-#
 	git-r3_checkout "https://github.com/cnr-isti-vclab/vcglib" "vcglib"
+
 	git-r3_fetch
 	git-r3_checkout
 }

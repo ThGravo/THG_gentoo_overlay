@@ -1,0 +1,27 @@
+# required by >sys-libs/ldb-1.1.27-r1 (argument)
+# /usr/portage/profiles/package.mask:
+# Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
+# Breaks samba's nmbd process (bug #592502)
+# Masked the possible fixed samba version until more testing has been performed.
+=sys-libs/ldb-1.1.29
+# required by sys-libs/ldb-1.1.29::gentoo
+# required by >sys-libs/ldb-1.1.27-r1 (argument)
+# /usr/portage/profiles/package.mask:
+# Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
+# Breaks samba's nmbd process (bug #592502)
+# Masked the possible fixed samba version until more testing has been performed.
+=sys-libs/tevent-0.9.31-r1
+# required by >net-fs/samba-4.2.14 (argument)
+# /usr/portage/profiles/package.mask:
+# Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
+# Masked for testing
+=net-fs/samba-4.5.3
+# required by dev-libs/gobject-introspection-1.52.1::gentoo
+# required by x11-libs/libnotify-0.7.7::gentoo
+# required by media-video/vlc-2.2.4-r1::gentoo[libnotify]
+# required by @selected
+# required by @world (argument)
+# /usr/portage/profiles/package.mask:
+# Gnome Team <gnome@gentoo.org> (08 Mar 2017)
+# GNOME 3.24 mask (#611270)
+=dev-libs/gobject-introspection-common-1.52.1

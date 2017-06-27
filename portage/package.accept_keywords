@@ -1,0 +1,19 @@
+x11-themes/paper-gtk-theme **
+x11-themes/paper-icon-theme **
+
+# required by =sys-devel/gcc-6* (argument)
+>=sys-devel/gcc-6.2.0-r1 **
+# required by gnome-shell-extension-weather (argument)
+=gnome-extra/gnome-shell-extension-weather-9999 **
+# required by gnome-extra/gs-extensions-drop-down-terminal (argument)
+=gnome-extra/gs-extensions-drop-down-terminal-9999 **
+# required by gnome-extra/gnome-shell-extensions-system-monitor (argument)
+=gnome-extra/gnome-shell-extensions-system-monitor-9999 **
+
+app-misc/powerline **
+app-vim/powerline-vim **
+media-fonts/powerline-symbols **
+# required by @CC-deps (argument)
+=sci-libs/vxl-9999 **
+
+<dev-util/cmake-9999 **

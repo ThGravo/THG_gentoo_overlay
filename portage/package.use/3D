@@ -1,0 +1,5 @@
+media-libs/assimp tools
+sci-mathematics/cgal qt5 mpfi ntl
+sci-libs/pcl qt5 vtk
+#fails to build
+=sci-libs/flann-1.9.1::gentoo -cuda

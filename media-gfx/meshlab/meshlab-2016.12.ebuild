@@ -4,12 +4,14 @@
 
 EAPI=5
 
-inherit eutils versionator multilib
+inherit eutils versionator multilib git-r3
 
 DESCRIPTION="A mesh processing system"
 HOMEPAGE="http://meshlab.sourceforge.net/"
 #MY_PV="$(delete_all_version_separators ${PV})"
 SRC_URI="https://github.com/cnr-isti-vclab/meshlab/archive/v2016.12.tar.gz"
+EGIT_REPO_URI="https://github.com/cnr-isti-vclab/vcglib.git"
+#EGIT_BRANCH="devel"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,6 +40,20 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/src"
 
+src_unpack() {
+	if [ "${A}" != "" ]; then
+		unpack ${A}
+	fi
+
+	cd "${WORKDIR}"
+
+	#git-r3_src_unpack
+	
+	git-r3_fetch "https://github.com/cnr-isti-vclab/vcglib"
+	# "refs/heads/devel"
+	git-r3_checkout "https://github.com/cnr-isti-vclab/vcglib" "${WORKDIR}/vcglib"
+}
+
 src_prepare() {
 	cd "${S}"
 	rm -fr external/{inc,lib}
@@ -47,6 +63,7 @@ src_prepare() {
 	dos2unix meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro
 	dos2unix meshlabplugins/filter_mutualinfoxml/levmarmethods.h
 	dos2unix meshlabplugins/filter_mutualinfoxml/solver.h
+	dos2unix meshlabplugins/filter_func/filter_func.pro
 	dos2unix plugins_experimental/edit_mutualcorrs/levmarmethods.h
 	dos2unix plugins_experimental/edit_mutualcorrs/solver.h
 	dos2unix plugins_experimental/filter_mutualglobal/levmarmethods.h
@@ -65,6 +82,7 @@ src_prepare() {
 		"${FILESDIR}/${PV}"/3ds.patch \
 		"${FILESDIR}/${PV}"/plugin_dir.patch \
 		"${FILESDIR}/${PV}"/shaders_dir.patch \
+		"${FILESDIR}/${PV}"/muparser.patch \
 		"${FILESDIR}/${PV}"/screened_poisson.patch
 }
 

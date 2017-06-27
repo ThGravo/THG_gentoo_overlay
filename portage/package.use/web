@@ -1,0 +1,15 @@
+www-client/firefox dbus gmp-autoupdate hwaccel jemalloc jit pulseaudio skia startup-notification -bindist -custom-cflags -custom-optimization -debug -gtk2 -jack neon -pgo system-cairo -system-harfbuzz -system-icu system-jpeg system-libevent -system-libvpx system-sqlite wifi"
+
+# required by www-client/firefox-50.1.0::gentoo[system-libvpx]
+# required by firefox (argument)
+>=media-libs/libvpx-1.6.0-r1 postproc
+# required by www-client/firefox-50.1.0::gentoo[system-sqlite]
+# required by firefox (argument)
+>=dev-db/sqlite-3.15.2 secure-delete
+# required by www-client/firefox-50.1.0::gentoo[pgo]
+# required by firefox (argument)
+>=x11-base/xorg-server-1.18.4 xvfb
+
+=net-libs/webkit-gtk-2.14.5:4/37::gentoo -egl
+=net-libs/webkit-gtk-2.16.1:4/37::gentoo -egl
+=net-libs/webkit-gtk-2.16.2:4/37::gentoo -egl

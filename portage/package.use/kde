@@ -1,0 +1,64 @@
+# dev-qt/qtwebengine-5.7.1-r1:5/5.7::gentoo fails
+=dev-qt/qt-creator-4.3.0* -webengine
+=kde-apps/kio-extras-17.04.1 -htmlthumbs
+
+kde-apps/okular chm djvu ebook mobi mobile
+
+# required by kde-apps/libkexiv2-16.12.2::gentoo
+# required by kde-apps/okular-16.12.2::gentoo[jpeg]
+# required by okular (argument)
+>=media-gfx/exiv2-0.25-r2 xmp
+
+kde-misc/kdeconnect app
+
+# required by media-libs/phonon-gstreamer-4.9.0::gentoo
+>=media-libs/phonon-4.9.1 qt5
+# required by media-libs/phonon-4.9.1::gentoo[gstreamer]
+# required by kde-frameworks/khtml-5.31.0::gentoo
+# required by kde-apps/kio-extras-16.12.2::gentoo[man]
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=media-libs/phonon-gstreamer-4.9.0 qt5
+# required by media-libs/phonon-4.9.1::gentoo[vlc]
+# required by kde-frameworks/khtml-5.31.0::gentoo
+# required by kde-apps/kio-extras-16.12.2::gentoo[man]
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=media-libs/phonon-vlc-0.9.0 qt5
+# required by dev-qt/qtwayland-5.7.1::gentoo
+# required by kde-frameworks/kwayland-5.31.0::gentoo
+# required by kde-plasma/plasma-integration-5.9.2::gentoo
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=dev-qt/qtgui-5.7.1 egl
+# required by kde-plasma/polkit-kde-agent-5.9.2::gentoo
+# required by kde-frameworks/kauth-5.31.0::gentoo[policykit]
+# required by kde-frameworks/kcmutils-5.31.0::gentoo
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=sys-auth/polkit-qt-0.112.0-r1 qt5
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=app-crypt/qca-2.1.3 qt5
+# required by kde-plasma/kwin-5.9.2::gentoo
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=media-libs/mesa-17.0.0 wayland
+# required by kde-frameworks/knotifications-5.31.0::gentoo[dbus]
+# required by kde-plasma/ksysguard-5.9.2::gentoo
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=dev-libs/libdbusmenu-qt-0.9.3_pre20160218 qt5
+# required by kde-frameworks/kwayland-5.31.0::gentoo
+# required by kde-plasma/plasma-integration-5.9.2::gentoo
+# required by kde-plasma/plasma-workspace-5.9.2::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by kde-misc/kdeconnect (argument)
+>=dev-qt/qtwayland-5.7.1 egl
+

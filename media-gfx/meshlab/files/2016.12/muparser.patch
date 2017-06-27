@@ -1,5 +1,5 @@
---- meshlab/src/meshlabplugins/filter_func/filter_func.pro	2016-10-31 00:00:30.459336619 +0100
-+++ meshlab/src/meshlabplugins/filter_func/filter_func.pro	2016-10-31 21:42:47.134972919 +0100
+--- meshlabplugins/filter_func/filter_func.pro	2016-10-31 00:00:30.459336619 +0100
++++ meshlabplugins/filter_func/filter_func.pro	2016-10-31 21:42:47.134972919 +0100
 @@ -21,7 +21,7 @@
  macx:LIBS            += $$MACLIBDIR/libmuparser.a
 -linux-g++:LIBS       += ../../external/lib/linux-g++/libmuparser.a

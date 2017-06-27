@@ -1,0 +1,4 @@
+# required by dev-util/nvidia-cuda-toolkit-8.0.44::gentoo
+# required by dev-util/nvidia-cuda-toolkit (argument)
+>=x11-drivers/nvidia-drivers-375.26 uvm
+

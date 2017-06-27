@@ -1,0 +1,5 @@
+app-doc/doxygen clang dot doxysearch qt5
+# required by media-gfx/graphviz-2.38.0-r1::gentoo
+# required by app-doc/doxygen-1.8.12::gentoo[dot]
+# required by app-doc/doxygen (argument)
+>=media-libs/gd-2.2.3 fontconfig

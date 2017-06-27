@@ -1,0 +1,18 @@
+dev-vcs/rabbitvcs diff gedit
+
+dev-qt/qt-creator webengine cmake glsl clangcodemodel clangstaticanalyzer autotools valgrind python designer
+# required by dev-qt/qtwebengine-5.7.1-r1::gentoo
+# required by dev-qt/qt-creator-4.2.1::cynede[webengine]
+# required by @selected
+# required by @world (argument)
+>=media-libs/libvpx-1.6.1 svc
+# required by dev-qt/qtwebengine-5.7.1-r1::gentoo
+# required by dev-qt/qt-creator-4.2.1::cynede[webengine]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebchannel-5.7.1 qml
+# required by dev-qt/qt-creator-4.2.1::cynede[webengine]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebengine-5.7.1-r1 widgets
+

@@ -1,0 +1,5 @@
+CC="clang"                            
+CXX="clang++"                         
+CFLAGS="${CFLAGS} -fno-lto"              
+CXXFLAGS="${CXXFLAGS} -fno-lto"
+

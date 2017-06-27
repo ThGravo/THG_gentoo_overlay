@@ -1,0 +1,6 @@
+=gnome-base/gnome-control-center-3.25.3::gnome-next wayland
+=x11-libs/gtk+-3.22.16:3::gnome-next wayland
+=media-libs/cogl-1.22.2:1.0/20::gentoo wayland
+=media-libs/clutter-1.26.2:1.0::gnome-next wayland
+=media-libs/clutter-gtk-1.8.2:1.0::gentoo wayland
+

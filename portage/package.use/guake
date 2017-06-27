@@ -1,0 +1,7 @@
+# required by x11-terms/guake-0.8.8::gentoo
+# required by guake (argument)
+>=x11-libs/vte-0.28.2-r208:0 python
+# required by x11-terms/guake-0.8.8::gentoo
+# required by guake (argument)
+>=dev-libs/keybinder-0.3.1-r200:0 python
+

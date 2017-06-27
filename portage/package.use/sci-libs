@@ -1,0 +1,3 @@
+sci-libs/hdf5 -threads -fortran
+sci-libs/matio hdf5 sparse
+sci-libs/ceres-solver sparse lapack

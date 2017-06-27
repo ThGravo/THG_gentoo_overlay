@@ -1,0 +1,3 @@
+# required by sys-devel/prelink-20151030::gentoo
+# required by sys-devel/prelink (argument)
+>=dev-libs/elfutils-0.169-r1 static-libs
