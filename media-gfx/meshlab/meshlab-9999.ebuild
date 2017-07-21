@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/cnr-isti-vclab/meshlab.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+debug"
 DEPEND="app-arch/bzip2
 	dev-cpp/eigen
 	dev-cpp/muParser
@@ -23,7 +23,6 @@ DEPEND="app-arch/bzip2
 	dev-qt/qtscript:5
 	dev-qt/qtxmlpatterns:5
 	dev-util/desktop-file-utils
-	media-gfx/jhead
 	media-libs/glew
 	media-libs/qhull
 	=media-libs/lib3ds-1*
@@ -39,9 +38,9 @@ DEPEND="app-arch/bzip2
 	sci-libs/levmar
 	dev-cpp/muParser
 	media-libs/qhull"
-#	sci-libs/vcglib"
-#	sci-libs/maxflow 
+#	sci-libs/maxflow
 #	sci-libs/gotoblas2
+#	media-gfx/jhead
 
 RDEPEND="${DEPEND}"
 
@@ -61,8 +60,10 @@ src_prepare() {
 	dos2unix meshlabplugins/filter_mutualglobal/levmarmethods.h
 	dos2unix meshlabplugins/filter_mutualglobal/solver.h
 	dos2unix meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
+	dos2unix ../../vcglib/wrap/io_trimesh/import_nvm.h
+	dos2unix ../../vcglib/wrap/io_trimesh/import_out.h
+	dos2unix meshlabplugins/filter_func/filter_func.pro
 
-	#cd "${WORKDIR}"
 	EPATCH_OPTS="--ignore-whitespace" epatch "${FILESDIR}/${PV}"/external.patch \
 		"${FILESDIR}/${PV}"/rpath.patch \
 		"${FILESDIR}/${PV}"/meshlabserver_GLU.patch \
@@ -70,11 +71,11 @@ src_prepare() {
 		"${FILESDIR}/${PV}"/levmar.patch \
 		"${FILESDIR}/${PV}"/3ds.patch \
 		"${FILESDIR}/${PV}"/plugin_dir.patch \
-		"${FILESDIR}/${PV}"/shaders_dir.patch
-#		"${FILESDIR}/${PV}"/screened_poisson.patch
-#		"${FILESDIR}/${PV}"/cpp11_abs.patch \
-#		"${FILESDIR}/${PV}"/bzip2.patch \
-#		"${FILESDIR}/${PV}"/fix_locale.patch \
+		"${FILESDIR}/${PV}"/shaders_dir.patch \
+		"${FILESDIR}/${PV}"/muparser.patch
+
+	cd "${WORKDIR}"
+        epatch "${FILESDIR}/${PV}"/import_bundle_out.patch
 
 	eapply_user
 }
