@@ -1,4 +1,4 @@
---- meshlab/src/meshlabplugins/io_3ds/io_3ds.pro	2016-10-31 00:00:28.662690502 +0100
+--- ../meshlab/src/meshlabplugins/io_3ds/io_3ds.pro	2016-10-31 00:00:28.662690502 +0100
 +++ meshlab/src/meshlabplugins/io_3ds/io_3ds.pro	2016-11-01 00:28:59.485188734 +0100
 @@ -14,7 +14,7 @@
  

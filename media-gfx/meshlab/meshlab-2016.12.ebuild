@@ -83,6 +83,9 @@ src_prepare() {
 		"${FILESDIR}/${PV}"/plugin_dir.patch \
 		"${FILESDIR}/${PV}"/shaders_dir.patch \
 		"${FILESDIR}/${PV}"/muparser.patch \
+		"${FILESDIR}/${PV}"/import_bundle_out.patch.patch \
+		"${FILESDIR}/${PV}"/lapack.patch \
+		"${FILESDIR}/${PV}"/ssynth.patch \
 		"${FILESDIR}/${PV}"/screened_poisson.patch
 }
 
