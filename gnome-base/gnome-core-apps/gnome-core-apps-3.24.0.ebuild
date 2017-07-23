@@ -28,7 +28,6 @@ RDEPEND="
 	>=gnome-base/gnome-keyring-3.20.1
 	>=gnome-extra/evolution-data-server-${PV}
 
-	>=app-crypt/seahorse-3.20.0
 	>=app-editors/gedit-3.22.0
 	>=app-text/evince-${PV}
 	>=gnome-extra/gnome-contacts-3.22.1
