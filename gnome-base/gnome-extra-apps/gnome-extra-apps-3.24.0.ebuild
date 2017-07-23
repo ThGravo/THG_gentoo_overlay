@@ -19,7 +19,6 @@ RDEPEND="
 	>=gnome-base/gnome-core-libs-${PV}
 
 	>=sys-apps/baobab-3.22.1
-	>=media-video/cheese-3.22.1
 	>=www-client/epiphany-3.22.2
 	>=app-arch/file-roller-3.22.1
 	>=gnome-extra/gnome-calculator-${PV}
