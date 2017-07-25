@@ -13,11 +13,11 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+#KEYWORDS="amd64 x86"
 IUSE="+flickr test +upnp-av"
 
 COMMON_DEPEND="
-	>=app-misc/tracker-1:=[miner-fs]
+	>=app-misc/tracker-1.99.1:=[miner-fs]
 	>=dev-libs/glib-2.44:2
 	gnome-base/gnome-desktop:3=
 	>=dev-libs/libgdata-0.15.2:0=[gnome-online-accounts]
@@ -55,11 +55,6 @@ python_check_deps() {
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
-
-#src_prepare() {
-#	epatch "${FILESDIR}"/tracker2.patch
-#	eapply_user
-#}
 
 src_configure() {
 	# XXX: how to deal with rdtscp support, x86intrin

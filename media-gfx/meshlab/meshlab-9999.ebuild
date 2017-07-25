@@ -37,7 +37,8 @@ DEPEND="app-arch/bzip2
 	media-gfx/jhead
 	sci-libs/levmar
 	dev-cpp/muParser
-	media-libs/qhull"
+	media-libs/qhull
+	app-text/dos2unix"
 #	sci-libs/maxflow
 #	sci-libs/gotoblas2
 #	media-gfx/jhead
@@ -63,6 +64,14 @@ src_prepare() {
 	dos2unix ../../vcglib/wrap/io_trimesh/import_nvm.h
 	dos2unix ../../vcglib/wrap/io_trimesh/import_out.h
 	dos2unix meshlabplugins/filter_func/filter_func.pro
+        dos2unix meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro
+        dos2unix meshlabplugins/filter_mutualinfoxml/levmarmethods.h
+        dos2unix meshlabplugins/filter_mutualinfoxml/solver.h
+        dos2unix meshlabplugins/edit_mutualcorrs/levmarmethods.h
+        dos2unix meshlabplugins/edit_mutualcorrs/solver.h
+        dos2unix meshlabplugins/filter_mutualglobal/levmarmethods.h
+        dos2unix meshlabplugins/filter_mutualglobal/solver.h
+        dos2unix meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
 
 	EPATCH_OPTS="--ignore-whitespace" epatch "${FILESDIR}/${PV}"/external.patch \
 		"${FILESDIR}/${PV}"/rpath.patch \
