@@ -25,7 +25,7 @@ RESTRICT="test"
 COMMON_DEPEND="
 	>=dev-util/meson-0.40.0
 	>=app-arch/gnome-autoar-0.2.1
-	>=dev-libs/glib-2.51.2:2[dbus]
+	>=dev-libs/glib-2.53.4:2[dbus]
 	>=x11-libs/pango-1.28.3
 	>=x11-libs/gtk+-3.21.6:3[introspection?]
 	>=dev-libs/libxml2-2.7.8:2
@@ -40,12 +40,12 @@ COMMON_DEPEND="
 	exif? ( >=media-libs/libexif-0.6.20 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	selinux? ( >=sys-libs/libselinux-2 )
-	tracker? ( >=app-misc/tracker-0.16 )
+	tracker? ( >=app-misc/tracker-0.16:=
+		   <=app-misc/tracker-2:= )
 	xmp? ( >=media-libs/exempi-2.1.0 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/perl-5
-	>=dev-util/gdbus-codegen-2.33
 	>=dev-util/gtk-doc-am-1.10
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
@@ -71,13 +71,13 @@ PDEPEND="
 MESON_BUILD_DIR="${WORKDIR}/${P}_mesonbuild"
 
 src_prepare() {
+	epatch "${FILESDIR}"/tracker2.patch
 	if use previewer; then
 		DOC_CONTENTS="nautilus uses gnome-extra/sushi to preview media files.
 			To activate the previewer, select a file and press space; to
 			close the previewer, press space again."
 	fi
 	mkdir -p "${MESON_BUILD_DIR}" || die
-	epatch "${FILESDIR}/"meson_depend_update.patch
 	gnome2_src_prepare
 }
 
