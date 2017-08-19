@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/cnr-isti-vclab/meshlab.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+debug"
+IUSE="debug"
 DEPEND="app-arch/bzip2
 	dev-cpp/eigen
 	dev-cpp/muParser
