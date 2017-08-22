@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 # We have to have write acccess /dev/nvidia0 and /dev/nvidiactl and the portage
 # user is (usually) not in the video group
-RESTRICT="userpriv"
+#RESTRICT="userpriv"
 
 pkg_setup() {
 	fortran-2_pkg_setup
@@ -79,12 +79,12 @@ src_configure() {
 		ARCH = $(tc-getAR)
 		ARCHFLAGS = cr
 		RANLIB = $(tc-getRANLIB)
-		CFLAGS    = -O3 -fPIC -DADD_ -Wall -fopenmp 
-		CXXFLAGS  =
+		CFLAGS    = -O3 -fPIC -DADD_ -Wall -fopenmp
+		CXXFLAGS  = ${CFLAGS}
 		FFLAGS    = -O3 -fPIC -DADD_ -Wall -Wno-unused-dummy-argument
 		F90FLAGS  = -O3 -fPIC -DADD_ -Wall -Wno-unused-dummy-argument -x f95-cpp-input
-		NVCCFLAGS = -O3         -DADD_       -Xcompiler -fPIC
-		LDFLAGS   =     -fPIC              -fopenmp
+		NVCCFLAGS = -O3 -DADD_ -Xcompiler -fPIC -std=c++11
+		LDFLAGS   = -fPIC -fopenmp
 		NVCC = nvcc
 		CC = $(tc-getCXX)
 		FORT = $(tc-getFC)
