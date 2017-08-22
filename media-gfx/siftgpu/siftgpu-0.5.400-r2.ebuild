@@ -4,11 +4,12 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils cuda
 
 DESCRIPTION="A GPU Implementation of SIFT"
 HOMEPAGE="http://cs.unc.edu/~ccwu/siftgpu/"
-SRC_URI="http://wwwx.cs.unc.edu/~ccwu/cgi-bin/siftgpu.cgi -> SiftGPU-V400.zip"
+#SRC_URI="http://wwwx.cs.unc.edu/~ccwu/cgi-bin/siftgpu.cgi -> SiftGPU-V400.zip"
+SRC_URI="https://repo.acin.tuwien.ac.at/tmp/permanent/SiftGPU-V400.zip"
 
 LICENSE="UNC"
 SLOT="0"
@@ -17,14 +18,22 @@ IUSE="cuda"
 
 DEPEND="media-libs/glew
 	media-libs/devil
-	dev-util/nvidia-cuda-toolkit"
+	dev-util/nvidia-cuda-toolkit
+	app-text/dos2unix"
 RDEPEND="${DEPEND}"
 
 MAKEOPTS="-j1"
+NVCC_FLAGS="-O2 -std=c++11"
 
 S="${WORKDIR}/SiftGPU"
 
 src_prepare() {
+	dos2unix makefile
+	if use cuda ; then
+		epatch "${FILESDIR}"/with-cuda.patch
+	else
+		epatch "${FILESDIR}"/no-cuda.patch
+	fi
 	rm -r include
 	sed -i -e's/siftgpu_prefer_glut = 0/siftgpu_prefer_glut = 1/' makefile
 }

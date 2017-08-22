@@ -1,6 +1,6 @@
 --- makefile	2012-10-04 18:14:12.000000000 +0200
-+++ makefile	2014-07-07 19:25:10.921986587 +0200
-@@ -7,14 +7,9 @@
++++ makefile	2017-08-22 14:28:33.561486153 +0200
+@@ -7,17 +7,12 @@
  siftgpu_enable_opencl = 0
  #------------------------------------------------------------------------------------------------
  # enable CUDA-based SiftGPU?
@@ -16,4 +16,8 @@
 +CUDA_INSTALL_PATH = /opt/cuda
  #change  additional  settings, like SM version here if it is not 1.0 (eg. -arch sm_13 for GTX280)
  #siftgpu_cuda_options = -Xopencc -OPT:unroll_size=200000
- #siftgpu_cuda_options = -arch sm_10
+-#siftgpu_cuda_options = -arch sm_10
++siftgpu_cuda_options = -arch sm_21 -std=c++11
+ #--------------------------------------------------------------------------------------------------
+ # enable SSE optimization for GL-based implementations
+ siftgpu_enable_sse = 1
