@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit git-r3 cmake-utils eutils
 
@@ -25,6 +25,7 @@ DEPEND="media-libs/glew
 
 RDEPEND="${DEPEND}"
 
+#PATCHES=("${FILESDIR}/cgal_cmake.patch")
 
 src_configure() {
 	local mycmakeargs=""
@@ -47,6 +48,7 @@ src_configure() {
 	-DINSTALL_QSSAO_PLUGIN=ON
 	-DINSTALL_QEDL_PLUGIN=ON
 	-DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
+	-DCGAL_DIR="/usr/lib64/cmake"
 	-DOPTION_USE_LIBLAS=ON
 	-DLIBLAS_INCLUDE_DIR="/usr/include"
 	-DLIBLAS_DEBUG_LIBRARY_FILE="/usr/lib64/liblas.so"
