@@ -1,0 +1,10 @@
+--- magmablas/magma_templates.h	2016-11-21 02:20:03.000000000 +0100
++++ magmablas/magma_templates.h	2017-08-22 16:06:29.120804641 +0200
+@@ -137,7 +137,7 @@
+ __host__ __device__
+ inline T max_nan( T x, T y )
+ {
+-    return (isnan(y) || (x) < (y) ? (y) : (x));
++    return (std::isnan(y) || (x) < (y) ? (y) : (x));
+ }
+

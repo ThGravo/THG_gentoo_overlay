@@ -45,6 +45,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/std_nan.patch"
+        epatch "${FILESDIR}/std_nan2.patch"
+
 	# distributed pc file not so useful so replace it
 	cat <<-EOF > ${PN}.pc
 		prefix=${EPREFIX}/usr
@@ -117,7 +120,7 @@ src_configure() {
 src_compile() {
 	emake lib
 	emake shared
-	mv lib/lib${PN}.so{,.2.2} || die
+	mv lib/lib${PN}.so lib/lib${PN}.so.2.2 || die
 	ln -sf lib${PN}.so.2.2 lib/lib${PN}.so.2 || die
 	ln -sf lib${PN}.so.2.2 lib/lib${PN}.so || die
 }
