@@ -40,8 +40,7 @@ COMMON_DEPEND="
 	exif? ( >=media-libs/libexif-0.6.20 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	selinux? ( >=sys-libs/libselinux-2 )
-	tracker? ( >=app-misc/tracker-0.16:=
-		   <=app-misc/tracker-2:= )
+	tracker? ( app-misc/tracker )
 	xmp? ( >=media-libs/exempi-2.1.0 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -71,7 +70,6 @@ PDEPEND="
 MESON_BUILD_DIR="${WORKDIR}/${P}_mesonbuild"
 
 src_prepare() {
-	epatch "${FILESDIR}"/tracker2.patch
 	if use previewer; then
 		DOC_CONTENTS="nautilus uses gnome-extra/sushi to preview media files.
 			To activate the previewer, select a file and press space; to
