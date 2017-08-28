@@ -92,6 +92,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	addpredict /dev/dri
+	addpredict /dev/ati
+	addpredict /dev/nvidiactl
 	local emesonargs=(
 		-Doption=disable-static
 		-Doption=enable-easy-codec-installation
