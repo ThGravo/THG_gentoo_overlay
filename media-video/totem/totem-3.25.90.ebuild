@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes" # plugins are dlopened
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
 
-inherit autotools gnome2 python-single-r1
+inherit gnome2 python-single-r1 meson
 
 DESCRIPTION="Media player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Videos"
@@ -77,12 +77,6 @@ DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
 	gnome-base/gnome-common
 "
-# eautoreconf needs:
-#	app-text/yelp-tools
-#	dev-libs/gobject-introspection-common
-#	gnome-base/gnome-common
-# docbook-xml-dtd is needed for user doc
-# Prevent dev-python/pylint dep, bug #482538
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -92,7 +86,7 @@ src_prepare() {
 	# Prevent pylint usage by tests, bug #482538
 	sed -i -e 's/ check-pylint//' src/plugins/Makefile.plugins || die
 
-	eautoreconf
+	mkdir -p "${MESON_BUILD_DIR}" || die
 	gnome2_src_prepare
 
 	# FIXME: upstream should provide a way to set GST_INSPECT, bug #358755 & co.
@@ -116,16 +110,19 @@ src_configure() {
 	# pylint is checked unconditionally, but is only used for make check
 	# appstream-util overriding necessary until upstream fixes their macro
 	# to respect configure switch
-	gnome2_src_configure \
-		--disable-run-in-source-tree \
-		--disable-static \
-		--enable-easy-codec-installation \
-		--enable-vala \
-		$(use_enable introspection) \
-		$(use_enable nautilus) \
-		$(use_enable python) \
-		PYLINT=$(type -P true) \
-		VALAC=$(type -P true) \
-		APPSTREAM_UTIL=$(type -P true) \
-		--with-plugins=${plugins}
+	local emesonargs=(
+		-Doption=disable-static
+		-Doption=enable-easy-codec-installation
+		-Doption=enable-vala
+		$(meson_use_enable introspection)
+		$(meson_use_enable nautilus)
+		$(meson_use_enable python)
+		PYLINT=$(type -P true)
+		VALAC=$(type -P true)
+		APPSTREAM_UTIL=$(type -P true)
+		-Dwith-plugins="all"
+	)
+#${plugins}
+        meson_src_configure
 }
+
