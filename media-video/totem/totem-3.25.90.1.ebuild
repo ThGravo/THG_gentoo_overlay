@@ -6,8 +6,9 @@ EAPI=6
 GNOME2_LA_PUNT="yes" # plugins are dlopened
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
+VALA_MIN_API_VERSION="0.34"
 
-inherit gnome2 python-single-r1 meson
+inherit gnome2 python-single-r1 meson vala
 
 DESCRIPTION="Media player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Videos"
@@ -60,10 +61,12 @@ RDEPEND="
 		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}]
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]
-		>=x11-libs/gtk+-3.5.2:3[introspection] )
+		>=x11-libs/gtk+-3.5.2:3[introspection]
+		dev-python/pylint[${PYTHON_USEDEP}] )
 	zeitgeist? ( >=gnome-extra/zeitgeist-0.9.12 )
 "
 DEPEND="${RDEPEND}
+	$(vala_depend)
 	app-text/docbook-xml-dtd:4.5
 	app-text/yelp-tools
 	dev-libs/appstream-glib
@@ -78,51 +81,37 @@ DEPEND="${RDEPEND}
 	gnome-base/gnome-common
 "
 
+src_prepare(){
+	mkdir ${S}/tmpbin
+	ln -s $(echo $(whereis valac-) | grep -oE "[^[[:space:]]*$") ${S}/tmpbin/valac
+	default
+}
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_prepare() {
-	# Prevent pylint usage by tests, bug #482538
-	sed -i -e 's/ check-pylint//' src/plugins/Makefile.plugins || die
-
-	mkdir -p "${MESON_BUILD_DIR}" || die
-	gnome2_src_prepare
-
-	# FIXME: upstream should provide a way to set GST_INSPECT, bug #358755 & co.
-	# gst-inspect causes sandbox violations when a plugin needs write access to
-	# /dev/dri/card* in its init phase.
-	sed -e "s|\(gst10_inspect=\).*|\1$(type -P true)|" \
-		-i configure || die
-}
-
 src_configure() {
-	# Disabled: sample-python, sample-vala
-	local plugins="apple-trailers,autoload-subtitles,brasero-disc-recorder"
-	plugins+=",im-status,gromit,media-player-keys,ontop"
-	plugins+=",properties,recent,rotation,screensaver,screenshot"
-	plugins+=",skipto,variable-rate,vimeo"
-	use lirc && plugins+=",lirc"
-	use nautilus && plugins+=",save-file"
-	use python && plugins+=",dbusservice,pythonconsole,opensubtitles"
-	use zeitgeist && plugins+=",zeitgeist-dp"
-
-	# pylint is checked unconditionally, but is only used for make check
-	# appstream-util overriding necessary until upstream fixes their macro
-	# to respect configure switch
 	local emesonargs=(
 		-Doption=disable-static
 		-Doption=enable-easy-codec-installation
 		-Doption=enable-vala
-		$(meson_use_enable introspection)
-		$(meson_use_enable nautilus)
-		$(meson_use_enable python)
-		PYLINT=$(type -P true)
-		VALAC=$(type -P true)
-		APPSTREAM_UTIL=$(type -P true)
-		-Dwith-plugins="all"
+		-Dwith-introspection=$(usex introspection true false)
+		-Dwith-nautilus=$(usex nautilus true false)
+		-Dwith-python=$(usex python true false)
+		-Dwith-plugins='auto'
 	)
-#${plugins}
-        meson_src_configure
+	PATH="${S}/tmpbin/:$PATH" meson_src_configure
 }
 
+src_compile() {
+	#cd ${BUILD_DIR} || die "build directory not found"
+	PATH="${S}/tmpbin/:$PATH" meson_src_compile
+	#eninja || die "ninja failed"
+}
+
+src_install() {
+	#cd ${BUILD_DIR} || die "build directory not found"
+	PATH="${S}/tmpbin/:$PATH" meson_src_install
+	#DESTDIR="${D}" eninja install || die "ninja install failed"
+}
