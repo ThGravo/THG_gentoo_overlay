@@ -1,0 +1,4 @@
+=media-sound/pulseaudio-10.0::musl
+=sys-libs/gpm-1.20.7-r99::musl
+=dev-libs/libgamin-0.1.10-r99::musl
+=net-dialup/ppp-2.4.7-r99:0/2.4.7::musl

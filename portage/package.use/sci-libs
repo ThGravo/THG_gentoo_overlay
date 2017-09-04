@@ -1,3 +1,4 @@
 sci-libs/hdf5 -threads -fortran
 sci-libs/matio hdf5 sparse
-sci-libs/ceres-solver sparse lapack
+sci-libs/ceres-solver sparse lapack cxsparse
+sci-libs/magma fermi

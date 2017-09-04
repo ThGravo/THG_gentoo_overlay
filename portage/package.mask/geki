@@ -1,0 +1,4 @@
+=sys-kernel/linux-headers-4.11.7::geki
+dev-util/boost-build::geki
+dev-libs/boost-headers::geki
+dev-libs/boost::geki

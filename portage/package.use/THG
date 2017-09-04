@@ -1,0 +1,8 @@
+# required by net-misc/gnome-online-miners-3.22.0::gentoo[flickr]
+# required by media-gfx/gnome-photos-3.25.3::THG
+# required by gnome-photos (argument)
+>=media-plugins/grilo-plugins-0.3.4 flickr
+# required by media-gfx/gnome-photos-3.25.3::THG
+# required by gnome-photos (argument)
+>=net-misc/gnome-online-miners-3.22.0 flickr
+

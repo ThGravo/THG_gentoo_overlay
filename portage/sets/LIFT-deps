@@ -1,0 +1,5 @@
+#dev-python/theano::gentoo
+sci-libs/scipy
+dev-python/h5py
+dev-python/parse
+dev-python/pygpu

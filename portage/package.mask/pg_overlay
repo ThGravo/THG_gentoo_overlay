@@ -1,0 +1,2 @@
+=dev-qt/qtdeclarative-5.9.1::pg_overlay
+media-libs/gst*::pg_overlay

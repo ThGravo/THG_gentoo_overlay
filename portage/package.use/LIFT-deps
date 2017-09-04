@@ -1,0 +1,4 @@
+# required by sci-libs/scipy-0.19.1::gentoo
+# required by dev-python/theano-9999::archenroot
+# required by @LIFT-deps (argument)
+>=dev-python/numpy-1.13.0 lapack

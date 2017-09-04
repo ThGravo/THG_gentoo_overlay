@@ -1,0 +1,37 @@
+# required by x11-drivers/nvidia-drivers-384.47::gentoo[wayland]
+# required by sci-libs/cholmod-2.1.2::gentoo[cuda]
+# required by sci-libs/ceres-solver-9999::THG[sparse]
+# required by @Theia-deps
+# required by @selected
+# required by @world (argument)
+>=dev-libs/wayland-1.13.0 abi_x86_32
+# required by dev-libs/wayland-1.13.0::gentoo
+# required by x11-drivers/nvidia-drivers-384.47::gentoo[wayland]
+# required by sci-libs/cholmod-2.1.2::gentoo[cuda]
+# required by sci-libs/ceres-solver-9999::THG[sparse]
+# required by @Theia-deps
+# required by @selected
+# required by @world (argument)
+>=dev-libs/expat-2.2.1 abi_x86_32
+# required by dev-libs/wayland-1.13.0::gentoo
+# required by media-libs/gst-plugins-bad-1.10.5::gentoo[wayland]
+# required by net-libs/webkit-gtk-2.17.4::gnome-next[gstreamer]
+# required by net-libs/gnome-online-accounts-3.25.3::gnome-next
+# required by gnome-base/gnome-control-center-3.22.2-r1::gentoo[gnome-online-accounts]
+# required by gnome-base/gnome-core-apps-3.22.2::gentoo
+# required by gnome-base/gnome-3.22.2::gentoo
+# required by @selected
+# required by @world (argument)
+>=virtual/libffi-3.0.13-r1 abi_x86_32
+# required by virtual/libffi-3.0.13-r1::gentoo
+# required by dev-libs/wayland-1.13.0::gentoo
+# required by media-libs/gst-plugins-bad-1.10.5::gentoo[wayland]
+# required by net-libs/webkit-gtk-2.17.4::gnome-next[gstreamer]
+# required by net-libs/gnome-online-accounts-3.25.3::gnome-next
+# required by gnome-base/gnome-control-center-3.22.2-r1::gentoo[gnome-online-accounts]
+# required by gnome-base/gnome-core-apps-3.22.2::gentoo
+# required by gnome-base/gnome-3.22.2::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libffi-3.2.1 abi_x86_32
+

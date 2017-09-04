@@ -1,8 +1,8 @@
 #sys-devel/gcc::dlang d
 #dev-lang/dmd selfhost static-libs
 #dev-lang/ldc2 dmd-2_074 -gdc-4_9_4
-#x11-terms/tilix -ldc2-1_2 dmd-2_074
+x11-terms/tilix -ldc2-1_2 dmd-2_075
 
 # required by x11-terms/tilix-1.6.1::dlang
 # required by tilix (argument)
->=dev-libs/gtkd-3.5.1-r2 vte sourceview -ldc2-1_2 dmd-2_074
+>=dev-libs/gtkd-3.5.1-r2 vte sourceview -ldc2-1_2 dmd-2_075

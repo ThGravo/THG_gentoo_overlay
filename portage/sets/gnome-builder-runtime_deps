@@ -1,0 +1,8 @@
+gnome-extra/gnome-builder::gentoo
+dev-util/ctags
+dev-python/jedi
+dev-python/lxml
+dev-util/valgrind
+dev-util/meson
+dev-util/cargo
+

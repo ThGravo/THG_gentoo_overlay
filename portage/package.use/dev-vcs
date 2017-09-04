@@ -1,0 +1,7 @@
+# required by dev-libs/libgit2-glib-0.25.0::gnome-next
+# required by dev-vcs/gitg-3.24.0::gentoo
+# required by gitg (argument)
+>=dev-libs/libgit2-0.25.1 ssh
+# required by dev-vcs/gitg-3.24.0::gentoo
+# required by gitg (argument)
+>=dev-libs/libgit2-glib-0.25.0 ssh

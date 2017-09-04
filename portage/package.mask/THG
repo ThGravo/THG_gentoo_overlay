@@ -1,3 +1,4 @@
+=dev-libs/gtkd-3.6.6::THG
 =sci-libs/vtk-7.0.0::THG
 =sci-libs/vtk-6.3.0::THG
 #=media-gfx/meshlab-2016.12

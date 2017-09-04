@@ -1,5 +1,6 @@
 # dev-qt/qtwebengine-5.7.1-r1:5/5.7::gentoo fails
-=dev-qt/qt-creator-4.3.0* -webengine
+=dev-qt/qt-creator-4.4.0_beta1 -webengine
+=dev-qt/qt-creator-4.3* -webengine
 =kde-apps/kio-extras-17.04.1 -htmlthumbs
 
 kde-apps/okular chm djvu ebook mobi mobile

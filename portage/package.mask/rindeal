@@ -1,0 +1,6 @@
+=media-libs/libvorbis-1.3.5::rindeal
+=media-libs/libvorbis-1.3.5::rindeal
+=sys-fs/ntfs3g-2017.3.23::rindeal
+=sys-apps/hwinfo-21.46::rindeal
+=sys-process/htop-2.0.2-r1::rindeal
+=sys-apps/shadow-4.5::rindeal
