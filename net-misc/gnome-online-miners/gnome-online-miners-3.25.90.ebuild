@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineMiners"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="flickr"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # libgdata[gnome] needed for goa support
 RDEPEND="
@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	epatch "${FILESDIR}/"tracker2.patch
 	gnome2_src_configure \
 		$(use_enable flickr) \
 		--disable-static \
