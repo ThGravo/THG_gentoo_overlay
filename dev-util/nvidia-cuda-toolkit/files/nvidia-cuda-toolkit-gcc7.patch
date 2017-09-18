@@ -1,0 +1,17 @@
+--- a/include/crt/host_config.h	2017-07-20 11:10:08.000000000 +0200
++++ b/include/crt/host_config.h	2017-09-06 15:44:37.741765577 +0200
+@@ -114,11 +114,11 @@
+ 
+ #if defined(__GNUC__)
+ 
+-#if __GNUC__ > 6
++#if __GNUC__ > 7
+ 
+-#error -- unsupported GNU version! gcc versions later than 6 are not supported!
++#error -- unsupported GNU version! gcc versions later than 7 are not supported!
+ 
+-#endif /* __GNUC__ > 6 */
++#endif /* __GNUC__ > 7 */
+ 
+ #if defined(__APPLE__) && defined(__MACH__) && !defined(__clang__)
+ #error -- clang and clang++ are the only supported host compilers on Mac OS X!
