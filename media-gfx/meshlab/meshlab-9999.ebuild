@@ -81,8 +81,7 @@ src_prepare() {
 		"${FILESDIR}/${PV}"/3ds.patch \
 		"${FILESDIR}/${PV}"/plugin_dir.patch \
 		"${FILESDIR}/${PV}"/shaders_dir.patch \
-		"${FILESDIR}/${PV}"/muparser.patch \
-		"${FILESDIR}/${PV}"/callback.patch
+		"${FILESDIR}/${PV}"/muparser.patch
 
 	cd "${WORKDIR}"
         epatch "${FILESDIR}/${PV}"/import_bundle_out.patch
