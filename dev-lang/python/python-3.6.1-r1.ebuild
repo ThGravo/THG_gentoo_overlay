@@ -49,7 +49,8 @@ RDEPEND="app-arch/bzip2:0=
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	!sys-devel/gcc[libffi(-)]"
+	!sys-devel/gcc[libffi(-)]
+	net-libs/libtirpc"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
