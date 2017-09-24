@@ -1,0 +1,21 @@
+From e1ad964cfc2ad76b47a6ef49b84d30655463ea83 Mon Sep 17 00:00:00 2001
+From: Mikhail Pukhlikov <cynede@gentoo.org>
+Date: Fri, 14 Jul 2017 15:44:47 +0400
+Subject: [PATCH] Use Alt+F12 to show/hide mode selector
+
+---
+ src/plugins/coreplugin/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/plugins/coreplugin/mainwindow.cpp b/src/plugins/coreplugin/mainwindow.cpp
+index 17fed47e85..5d351b6f22 100644
+--- a/src/plugins/coreplugin/mainwindow.cpp
++++ b/src/plugins/coreplugin/mainwindow.cpp
+@@ -716,6 +716,7 @@ void MainWindow::registerDefaultActions()
+     m_toggleModeSelectorAction = new QAction(tr("Show Mode Selector"), this);
+     m_toggleModeSelectorAction->setCheckable(true);
+     cmd = ActionManager::registerAction(m_toggleModeSelectorAction, Constants::TOGGLE_MODE_SELECTOR);
++    cmd->setDefaultKeySequence(QKeySequence("Alt+F12"));
+     connect(m_toggleModeSelectorAction, &QAction::triggered,
+             ModeManager::instance(), &ModeManager::setModeSelectorVisible);
+     mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);

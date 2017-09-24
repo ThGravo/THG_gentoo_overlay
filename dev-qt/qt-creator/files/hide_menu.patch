@@ -1,0 +1,32 @@
+diff --git a/src/plugins/coreplugin/coreconstants.h b/src/plugins/coreplugin/coreconstants.h
+index 78c7ae6011..02afac6414 100644
+--- a/src/plugins/coreplugin/coreconstants.h
++++ b/src/plugins/coreplugin/coreconstants.h
+@@ -93,6 +93,7 @@ const char TOGGLE_LEFT_SIDEBAR[]   = "QtCreator.ToggleLeftSidebar";
+ const char TOGGLE_RIGHT_SIDEBAR[]  = "QtCreator.ToggleRightSidebar";
+ const char TOGGLE_MODE_SELECTOR[]  = "QtCreator.ToggleModeSelector";
+ const char TOGGLE_FULLSCREEN[]     = "QtCreator.ToggleFullScreen";
++const char TOGGLE_MENUBAR[]        = "QtCreator.ToggleMenuBar";
+ const char THEMEOPTIONS[]          = "QtCreator.ThemeOptions";
+ 
+ const char TR_SHOW_LEFT_SIDEBAR[]  = QT_TRANSLATE_NOOP("Core", "Show Left Sidebar");
+diff --git a/src/plugins/coreplugin/mainwindow.cpp b/src/plugins/coreplugin/mainwindow.cpp
+index 17fed47e85..161b48d242 100644
+--- a/src/plugins/coreplugin/mainwindow.cpp
++++ b/src/plugins/coreplugin/mainwindow.cpp
+@@ -668,6 +668,16 @@ void MainWindow::registerDefaultActions()
+         cmd->setAttribute(Command::CA_UpdateText);
+     mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
+ 
++    // Toggle Menubar Action
++    QAction *toggleMenuBar = new QAction(tr("Hide/Show Menu"), this);
++    toggleMenuBar->setEnabled(true);
++    toggleMenuBar->setCheckable(true);
++    cmd = ActionManager::registerAction(toggleMenuBar, Constants::TOGGLE_MENUBAR);
++    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+M")));
++    connect(toggleMenuBar, &QAction::triggered,
++            this, [this](bool notVisible) { this->menuBar()->setVisible(!notVisible); });
++    mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
++
+     if (UseMacShortcuts) {
+         mwindow->addSeparator(Constants::G_WINDOW_SIZE);

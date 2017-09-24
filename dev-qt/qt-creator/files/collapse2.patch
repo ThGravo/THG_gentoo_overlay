@@ -1,0 +1,61 @@
+diff --git src/plugins/projectexplorer/projecttreewidget.cpp src/plugins/projectexplorer/projecttreewidget.cpp
+index f310cd1468..2cadfe9773 100644
+--- src/plugins/projectexplorer/projecttreewidget.cpp
++++ src/plugins/projectexplorer/projecttreewidget.cpp
+@@ -285,7 +285,15 @@ ProjectTreeWidget::ProjectTreeWidget(QWidget *parent) : QWidget(parent)
+     connect(m_toggleSync, &QAbstractButton::clicked,
+             this, &ProjectTreeWidget::toggleAutoSynchronization);
+ 
++    m_collapseAll = new QToolButton;
++    m_collapseAll->setIcon(Utils::Icons::COLLAPSE.icon());
++    m_collapseAll->setCheckable(false);
++    m_collapseAll->setToolTip(tr("Collapse"));
++    connect(m_collapseAll, &QAbstractButton::clicked,
++            this, &ProjectTreeWidget::collapseAll);
++
+     setCurrentItem(ProjectTree::findCurrentNode());
++
+     setAutoSynchronization(true);
+ 
+     m_projectTreeWidgets << this;
+@@ -372,6 +380,11 @@ QToolButton *ProjectTreeWidget::toggleSync()
+     return m_toggleSync;
+ }
+ 
++QToolButton *ProjectTreeWidget::collapseButton()
++{
++    return m_collapseAll;
++}
++
+ void ProjectTreeWidget::toggleAutoSynchronization()
+ {
+     setAutoSynchronization(!m_autoSync);
+@@ -542,7 +555,7 @@ NavigationView ProjectTreeWidgetFactory::createWidget()
+     filterMenu->addAction(ptw->m_trimEmptyDirectoriesAction);
+     filter->setMenu(filterMenu);
+ 
+-    n.dockToolBarWidgets << filter << ptw->toggleSync();
++    n.dockToolBarWidgets << filter << ptw->toggleSync() << ptw->collapseButton();
+     return n;
+ }
+ 
+diff --git src/plugins/projectexplorer/projecttreewidget.h src/plugins/projectexplorer/projecttreewidget.h
+index 4d87b6ad0f..db578c0c52 100644
+--- src/plugins/projectexplorer/projecttreewidget.h
++++ src/plugins/projectexplorer/projecttreewidget.h
+@@ -57,6 +57,7 @@ public:
+     bool projectFilter();
+     bool generatedFilesFilter();
+     QToolButton *toggleSync();
++    QToolButton *collapseButton();
+     Node *currentNode();
+     void sync(ProjectExplorer::Node *node);
+     void showMessage(ProjectExplorer::Node *node, const QString &message);
+@@ -87,6 +88,7 @@ private:
+     QAction *m_filterGeneratedFilesAction = nullptr;
+     QAction *m_trimEmptyDirectoriesAction = nullptr;
+     QToolButton *m_toggleSync = nullptr;
++    QToolButton *m_collapseAll = nullptr;
+ 
+     QString m_modelId;
+     bool m_autoSync = true;

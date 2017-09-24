@@ -1,0 +1,69 @@
+From 949129932ff7ce36ac6ba6f60e6cd756c64b0ea9 Mon Sep 17 00:00:00 2001
+From: Mikhail Pukhlikov <cynede@gentoo.org>
+Date: Mon, 10 Jul 2017 16:39:09 +0400
+Subject: [PATCH] Add Collapse All ToolButton to Project Tree
+
+---
+ src/plugins/projectexplorer/projecttreewidget.cpp | 14 +++++++++++++-
+ src/plugins/projectexplorer/projecttreewidget.h   |  2 ++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/projectexplorer/projecttreewidget.cpp b/src/plugins/projectexplorer/projecttreewidget.cpp
+index 372dbdb757..b19b81a9e8 100644
+--- a/src/plugins/projectexplorer/projecttreewidget.cpp
++++ b/src/plugins/projectexplorer/projecttreewidget.cpp
+@@ -218,6 +218,13 @@ ProjectTreeWidget::ProjectTreeWidget(QWidget *parent) : QWidget(parent)
+     connect(m_toggleSync, &QAbstractButton::clicked,
+             this, &ProjectTreeWidget::toggleAutoSynchronization);
+ 
++    m_collapseAll = new QToolButton;
++    m_collapseAll->setIcon(Utils::Icons::COLLAPSE.icon());
++    m_collapseAll->setCheckable(false);
++    m_collapseAll->setToolTip(tr("Collapse"));
++    connect(m_collapseAll, &QAbstractButton::clicked,
++            this, &ProjectTreeWidget::collapseAll);
++
+     setCurrentItem(ProjectTree::currentNode());
+     setAutoSynchronization(true);
+ 
+@@ -305,6 +312,11 @@ QToolButton *ProjectTreeWidget::toggleSync()
+     return m_toggleSync;
+ }
+ 
++QToolButton *ProjectTreeWidget::collapseButton()
++{
++    return m_collapseAll;
++}
++
+ void ProjectTreeWidget::toggleAutoSynchronization()
+ {
+     setAutoSynchronization(!m_autoSync);
+@@ -468,7 +480,7 @@ NavigationView ProjectTreeWidgetFactory::createWidget()
+     filterMenu->addAction(ptw->m_filterGeneratedFilesAction);
+     filter->setMenu(filterMenu);
+ 
+-    n.dockToolBarWidgets << filter << ptw->toggleSync();
++    n.dockToolBarWidgets << filter << ptw->toggleSync() << ptw->collapseButton();
+     return n;
+ }
+ 
+diff --git a/src/plugins/projectexplorer/projecttreewidget.h b/src/plugins/projectexplorer/projecttreewidget.h
+index 072cc1f1ab..0275af0fe6 100644
+--- a/src/plugins/projectexplorer/projecttreewidget.h
++++ b/src/plugins/projectexplorer/projecttreewidget.h
+@@ -57,6 +57,7 @@ class ProjectTreeWidget : public QWidget
+     bool projectFilter();
+     bool generatedFilesFilter();
+     QToolButton *toggleSync();
++    QToolButton *collapseButton();
+     Node *currentNode();
+     void sync(ProjectExplorer::Node *node);
+     void showMessage(ProjectExplorer::Node *node, const QString &message);
+@@ -85,6 +86,7 @@ class ProjectTreeWidget : public QWidget
+     QAction *m_filterProjectsAction = nullptr;
+     QAction *m_filterGeneratedFilesAction;
+     QToolButton *m_toggleSync;
++    QToolButton *m_collapseAll;
+ 
+     QString m_modelId;
+     bool m_autoSync = false;

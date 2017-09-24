@@ -1,0 +1,59 @@
+diff --git a/src/plugins/projectexplorer/compileoutputwindow.cpp b/src/plugins/projectexplorer/compileoutputwindow.cpp
+index e7a175fe27..0b3faef8fb 100644
+--- a/src/plugins/projectexplorer/compileoutputwindow.cpp
++++ b/src/plugins/projectexplorer/compileoutputwindow.cpp
+@@ -147,7 +147,8 @@ CompileOutputWindow::CompileOutputWindow(QAction *cancelBuildAction) :
+     m_cancelBuildButton(new QToolButton),
+     m_zoomInButton(new QToolButton),
+     m_zoomOutButton(new QToolButton),
+-    m_escapeCodeHandler(new Utils::AnsiEscapeCodeHandler)
++    m_escapeCodeHandler(new Utils::AnsiEscapeCodeHandler),
++    m_stdErrContext(StdErrContext::Error)
+ {
+     Core::Context context(C_COMPILE_OUTPUT);
+     m_outputWindow = new CompileOutputTextEdit(context);
+@@ -260,7 +261,18 @@ void CompileOutputWindow::appendText(const QString &text, BuildStep::OutputForma
+         textFormat.setFontWeight(QFont::Normal);
+         break;
+     case BuildStep::OutputFormat::Stderr:
+-        textFormat.setForeground(theme->color(Theme::OutputPanes_ErrorMessageTextColor));
++        // context change check
++        if (text.toLower().contains("warning:"))
++            m_stdErrContext = StdErrContext::Warning;
++        else if (text.toLower().contains("error:"))
++            m_stdErrContext = StdErrContext::Error;
++
++        // set different color output depending on context
++        if (m_stdErrContext == StdErrContext::Warning)
++            textFormat.setForeground(theme->color(Theme::OutputPanes_TestWarnTextColor));
++        else
++            textFormat.setForeground(theme->color(Theme::OutputPanes_ErrorMessageTextColor));
++
+         textFormat.setFontWeight(QFont::Normal);
+         break;
+     case BuildStep::OutputFormat::NormalMessage:
+diff --git a/src/plugins/projectexplorer/compileoutputwindow.h b/src/plugins/projectexplorer/compileoutputwindow.h
+index 043b07001b..c563ffe19f 100644
+--- a/src/plugins/projectexplorer/compileoutputwindow.h
++++ b/src/plugins/projectexplorer/compileoutputwindow.h
+@@ -41,6 +41,12 @@ namespace Utils { class AnsiEscapeCodeHandler; }
+ 
+ namespace ProjectExplorer {
+ 
++enum class StdErrContext
++{
++    Error,
++    Warning
++};
++
+ class BuildManager;
+ class Task;
+ 
+@@ -92,6 +98,7 @@ private:
+     QToolButton *m_zoomInButton;
+     QToolButton *m_zoomOutButton;
+     Utils::AnsiEscapeCodeHandler *m_escapeCodeHandler;
++    StdErrContext m_stdErrContext;
+ };
+ 
+ } // namespace Internal
