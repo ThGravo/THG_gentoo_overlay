@@ -82,8 +82,8 @@ src_configure() {
 		ARCH = $(tc-getAR)
 		ARCHFLAGS = cr
 		RANLIB = $(tc-getRANLIB)
-		CFLAGS    = -O3 -fPIC -DADD_ -Wall -fopenmp
-		CXXFLAGS  = ${CFLAGS}
+		CFLAGS    = -O3 -fPIC -DADD_ -Wall -fopenmp -std=c++11
+		CXXFLAGS  = ${CFLAGS} -std=c++11
 		FFLAGS    = -O3 -fPIC -DADD_ -Wall -Wno-unused-dummy-argument
 		F90FLAGS  = -O3 -fPIC -DADD_ -Wall -Wno-unused-dummy-argument -x f95-cpp-input
 		NVCCFLAGS = -O3 -DADD_ -Xcompiler -fPIC -std=c++11

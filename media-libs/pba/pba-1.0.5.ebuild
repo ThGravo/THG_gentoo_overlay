@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils flag-o-matic cuda
 
 DESCRIPTION="Multicore Bundle Adjustment"
 HOMEPAGE="http://grail.cs.washington.edu/projects/mcba/"
@@ -20,6 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 MAKEOPTS="-j1"
+NVCCFLAGS="-O3 -std=c++11"
 
 S="${WORKDIR}/pba"
 
@@ -33,6 +34,8 @@ src_prepare() {
 		epatch "${FILESDIR}"/no_gpu.patch
 	fi
 	chmod +x makefile
+
+	append-cxxflags -std=c++11
 }
 
 src_install() {
