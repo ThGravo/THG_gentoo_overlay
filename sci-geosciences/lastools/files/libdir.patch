@@ -1,0 +1,12 @@
+--- lastools-9999/CMakeLists.txt	2017-10-05 18:33:29.452161826 +0200
++++ lastools-9999/CMakeLists.txt	2017-10-05 18:46:55.846435871 +0200
+@@ -18,7 +18,7 @@
+ add_library( las SHARED ${LASLIB_SOURCES} ${LASZIP_SOURCES} )
+ 
+ install(TARGETS las
+-         DESTINATION lib)
++         DESTINATION lib${LIB_SUFFIX})
+ install(DIRECTORY LASlib/inc/ DESTINATION include/LASlib
+         FILES_MATCHING PATTERN "*.hpp")
+ install(DIRECTORY LASzip/src/ DESTINATION include/LASzip
+
