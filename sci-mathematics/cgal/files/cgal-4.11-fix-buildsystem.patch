@@ -1,0 +1,12 @@
+--- CGAL-4.11/cmake/modules/CGAL_SetupFlags.cmake	2017-09-20 21:00:13.000000000 +0200
++++ CGAL-4.11/cmake/modules/CGAL_SetupFlags.cmake	2017-10-05 17:53:57.589991012 +0200
+@@ -63,7 +63,7 @@
+ 
+ if ( NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Debug"
+      AND NOT "${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebInfo" AND NOT "${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel" )
+-  message( FATAL_ERROR "${CMAKE_BUILD_TYPE} is not a valid build type: only Release, Debug, RelWithDebInfo or MinSizeRel is allowed" )
++  message( WARNING "${CMAKE_BUILD_TYPE} is not a valid build type: only Release, Debug, RelWithDebInfo or MinSizeRel is allowed" )
+ endif()
+ 
+ message( STATUS "Build type: ${CMAKE_BUILD_TYPE}" )
+
