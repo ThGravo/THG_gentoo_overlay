@@ -14,14 +14,15 @@ EGIT_BRANCH="master"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+#IUSE=""
 
 DEPEND="media-libs/glew
 	sci-mathematics/cgal
 	sci-libs/pcl
 	sci-libs/mpir
 	dev-qt/qtcore:5
-	dev-qt/qtopengl:5"
+	dev-qt/qtopengl:5
+	sci-geosciences/liblas"
 
 RDEPEND="${DEPEND}"
 

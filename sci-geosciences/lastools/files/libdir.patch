@@ -5,7 +5,7 @@
  
  install(TARGETS las
 -         DESTINATION lib)
-+         DESTINATION lib${LIB_SUFFIX})
++         DESTINATION lib${LIB_SUFFIX}/LAStools)
  install(DIRECTORY LASlib/inc/ DESTINATION include/LASlib
          FILES_MATCHING PATTERN "*.hpp")
  install(DIRECTORY LASzip/src/ DESTINATION include/LASzip
