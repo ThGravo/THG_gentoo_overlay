@@ -6,11 +6,13 @@ EAPI=6
 inherit cuda eutils flag-o-matic portability toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
-DRIVER_PV="384.59"
+DRIVER_PV="384.81"
 
 DESCRIPTION="NVIDIA CUDA Software Development Kit"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
-SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/rc/local_installers/cuda_${PV}_${DRIVER_PV}_linux-run -> cuda_${PV}_${DRIVER_PV}_linux.run"
+#SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/rc/local_installers/cuda_${PV}_${DRIVER_PV}_linux-run -> cuda_${PV}_${DRIVER_PV}_linux.run"
+SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux-run -> cuda_${PV}_${DRIVER_PV}_linux.run"
+#https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
 
 LICENSE="CUDPP"
 SLOT="0"
@@ -28,7 +30,7 @@ RDEPEND="
 		)"
 DEPEND="${RDEPEND}"
 
-RESTRICT="test fetch"
+RESTRICT="test"
 
 S=${WORKDIR}/samples
 
@@ -39,11 +41,11 @@ QA_EXECSTACK=(
 	opt/cuda/sdk/bin/x86_64/linux/release/cdpSimpleQuicksort
 	)
 
-pkg_nofetch() {
-        elog "Please download ${A} from:"
-        elog "https://developer.nvidia.com/cuda-release-candidate-download"
-        elog "and move it to ${DISTDIR}"
-}
+#pkg_nofetch() {
+#        elog "Please download ${A} from:"
+#        elog "https://developer.nvidia.com/cuda-release-candidate-download"
+#        elog "and move it to ${DISTDIR}"
+#}
 
 src_unpack() {
 	# We first need to unpack the cuda_${PV}_linux.run file
