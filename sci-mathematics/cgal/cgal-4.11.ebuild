@@ -33,7 +33,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
-		dev-qt/qtscript:5[scripttools]
+		dev-qt/qtscript:5
 		dev-qt/qtxml:5
 	)
 	mpfi? ( sci-libs/mpfi )
