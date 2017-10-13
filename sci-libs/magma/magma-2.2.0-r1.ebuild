@@ -45,8 +45,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/std_nan.patch"
-        epatch "${FILESDIR}/std_nan2.patch"
+	#epatch "${FILESDIR}/std_nan.patch"
+	#epatch "${FILESDIR}/std_nan2.patch"
 
 	# distributed pc file not so useful so replace it
 	cat <<-EOF > ${PN}.pc

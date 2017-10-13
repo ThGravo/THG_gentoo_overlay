@@ -44,8 +44,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-        epatch "${FILESDIR}/std_nan.patch"
-        epatch "${FILESDIR}/std_nan2.patch"
+        #epatch "${FILESDIR}/std_nan.patch"
+        #epatch "${FILESDIR}/std_nan2.patch"
 
 	# distributed pc file not so useful so replace it
 	cat <<-EOF > "${PN}.pc"
@@ -85,7 +85,7 @@ src_configure() {
 		CXXFLAGS  = -O3 -fPIC -DADD_ -Wall -fopenmp -std=c++11
 		FFLAGS    = -O3 -fPIC -DADD_ -Wall -Wno-unused-dummy-argument
 		F90FLAGS  = -O3 -fPIC -DADD_ -Wall -Wno-unused-dummy-argument -x f95-cpp-input
-		NVCCFLAGS = -O3       -DADD_       -Xcompiler -fPIC -std=c++11
+		NVCCFLAGS = -O3       -DADD_       -Xcompiler -fPIC
 		LDFLAGS   =     -fPIC              -fopenmp
 		NVCC = nvcc
 		CC = $(tc-getCXX)

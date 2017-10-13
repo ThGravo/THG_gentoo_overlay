@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils cuda
+inherit eutils
 
 DESCRIPTION="A GPU Implementation of SIFT"
 HOMEPAGE="http://cs.unc.edu/~ccwu/siftgpu/"
@@ -23,7 +23,6 @@ DEPEND="media-libs/glew
 RDEPEND="${DEPEND}"
 
 MAKEOPTS="-j1"
-NVCC_FLAGS="-O2 -std=c++11"
 
 S="${WORKDIR}/SiftGPU"
 
@@ -36,6 +35,8 @@ src_prepare() {
 	fi
 	rm -r include
 	sed -i -e's/siftgpu_prefer_glut = 0/siftgpu_prefer_glut = 1/' makefile
+	sed -i -e's/siftgpu_sse_options = -march=native -mfpmath=sse/siftgpu_sse_options = -O3 -march=native -mfpmath=sse -std=c++11 -w/' makefile
+        sed -i -e's/siftgpu_cuda_options = -arch sm_21 -std=c++11/siftgpu_cuda_options = -arch sm_21 -std=c++11/' makefile
 }
 
 src_install() {

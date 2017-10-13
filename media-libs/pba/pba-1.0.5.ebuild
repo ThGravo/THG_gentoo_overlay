@@ -20,7 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 MAKEOPTS="-j1"
-NVCCFLAGS="-O3 -std=c++11"
+NVCCFLAGS="-O3 -std=c++11 -Xcompiler -D__CORRECT_ISO_CPP11_MATH_H_PROTO"
 
 S="${WORKDIR}/pba"
 
