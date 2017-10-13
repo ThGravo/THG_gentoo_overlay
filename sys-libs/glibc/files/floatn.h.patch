@@ -1,0 +1,13 @@
+--- sysdeps/x86/bits/floatn.h	2017-08-02 14:57:16.000000000 +0200
++++ sysdeps/x86/bits/floatn.h	2017-10-12 17:57:31.315671990 +0200
+@@ -28,7 +28,8 @@
+    support, for x86_64 and x86.  */
+ #if (defined __x86_64__							\
+      ? __GNUC_PREREQ (4, 3)						\
+-     : (defined __GNU__ ? __GNUC_PREREQ (4, 5) : __GNUC_PREREQ (4, 4)))
++     : (defined __GNU__ ? __GNUC_PREREQ (4, 5) : __GNUC_PREREQ (4, 4))) \
++       && !defined(__CUDACC__)
+ # define __HAVE_FLOAT128 1
+ #else
+ # define __HAVE_FLOAT128 0
+
