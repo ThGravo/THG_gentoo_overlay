@@ -1,0 +1,28 @@
+From e183bc7104e27a321cc50d61a99bb9b36f9c4b15 Mon Sep 17 00:00:00 2001
+From: Jacques-Pascal Deplaix <jp.deplaix@gmail.com>
+Date: Sat, 15 Jul 2017 21:13:19 +0200
+Subject: [PATCH] Enable ocamlgraph to be safe-string compatible
+
+---
+ lib/bitv.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/bitv.ml b/lib/bitv.ml
+index 28d0ac5..23f5325 100644
+--- a/lib/bitv.ml
++++ b/lib/bitv.ml
+@@ -449,11 +449,11 @@ let all_ones v =
+ 
+ let to_string v =
+   let n = v.length in
+-  let s = String.make n '0' in
++  let s = Buffer.create n in
+   for i = 0 to n - 1 do
+-    if unsafe_get v i then s.[i] <- '1'
++    Buffer.add_char s (if unsafe_get v i then '1' else '0')
+   done;
+-  s
++  Buffer.contents s
+ 
+ let print fmt v = Format.pp_print_string fmt (to_string v)
+ 
