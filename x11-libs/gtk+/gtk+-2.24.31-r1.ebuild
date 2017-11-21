@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
+inherit autotools eutils gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx flag-o-matic
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -124,6 +124,7 @@ src_prepare() {
 
 	# -O3 and company cause random crashes in applications, bug #133469
 	#replace-flags -O3 -O2
+	append-cflags -Wl,-z,muldefs
 	#strip-flags
 
 	if ! use test ; then
