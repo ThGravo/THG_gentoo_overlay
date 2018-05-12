@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="flickr test upnp-av"
 
 COMMON_DEPEND="
-	>=app-misc/tracker-1.99.1:=[miner-fs]
+	app-misc/tracker[miner-fs]
 	>=dev-libs/glib-2.44:2
 	gnome-base/gnome-desktop:3=
 	>=dev-libs/libgdata-0.15.2:0=[gnome-online-accounts]
