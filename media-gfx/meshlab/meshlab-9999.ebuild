@@ -74,12 +74,8 @@ src_prepare() {
         dos2unix meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
 
 	EPATCH_OPTS="--ignore-whitespace" epatch "${FILESDIR}/${PV}"/external.patch \
-		"${FILESDIR}/${PV}"/rpath.patch \
-		"${FILESDIR}/${PV}"/meshlabserver_GLU.patch \
-		"${FILESDIR}/${PV}"/mpir.patch \
 		"${FILESDIR}/${PV}"/levmar.patch \
 		"${FILESDIR}/${PV}"/3ds.patch \
-		"${FILESDIR}/${PV}"/plugin_dir.patch \
 		"${FILESDIR}/${PV}"/shaders_dir.patch \
 		"${FILESDIR}/${PV}"/muparser.patch
 
