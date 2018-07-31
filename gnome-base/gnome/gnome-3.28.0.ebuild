@@ -27,12 +27,12 @@ RDEPEND="
 	>=x11-wm/mutter-${PV}
 	>=gnome-base/gnome-shell-${PV}[bluetooth?]
 
-	>=x11-themes/gnome-backgrounds-3.22.1
+	>=x11-themes/gnome-backgrounds-${PV}
 	x11-themes/sound-theme-freedesktop
 
 	accessibility? (
-		>=app-accessibility/at-spi2-atk-2.22
-		>=app-accessibility/at-spi2-core-2.22
+		>=app-accessibility/at-spi2-atk-2.26
+		>=app-accessibility/at-spi2-core-2.26
 		>=app-accessibility/caribou-0.4.21
 		>=app-accessibility/orca-${PV}
 		>=gnome-extra/mousetweaks-3.12.0 )
@@ -42,7 +42,7 @@ RDEPEND="
 
 DEPEND=""
 
-PDEPEND=">=gnome-base/gvfs-1.30.2[udisks]"
+PDEPEND=">=gnome-base/gvfs-1.36.2[udisks]"
 
 pkg_postinst() {
 	# Remember people where to find our project information

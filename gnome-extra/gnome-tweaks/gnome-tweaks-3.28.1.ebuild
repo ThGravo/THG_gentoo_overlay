@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit gnome2 python-r1 meson ninja-utils
 
 DESCRIPTION="Tool to customize GNOME 3 options"
-HOMEPAGE="https://wiki.gnome.org/action/show/Apps/GnomeTweakTool"
+HOMEPAGE="https://wiki.gnome.org/action/show/Apps/Tweaks"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -21,22 +21,22 @@ KEYWORDS="amd64 ~ia64 x86"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/glib:2[dbus]
-	>=dev-python/pygobject-3.10.2:3[${PYTHON_USEDEP}]
-	>=gnome-base/gsettings-desktop-schemas-3.23.3
+	>=dev-python/pygobject-${PV}:3[${PYTHON_USEDEP}]
+	>=gnome-base/gsettings-desktop-schemas-3.28.0
 "
 # g-s-d, gnome-desktop, gnome-shell etc. needed at runtime for the gsettings schemas
 RDEPEND="${COMMON_DEPEND}
-	>=gnome-base/gnome-desktop-3.6.0.1:3=[introspection]
-	>=x11-libs/gtk+-3.12:3[introspection]
+	>=gnome-base/gnome-desktop-${PV}:3=[introspection]
+	>=x11-libs/gtk+-3.22.30:3[introspection]
 
 	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
 	>=gnome-base/gnome-settings-daemon-3
-	>=gnome-base/gnome-shell-3.24
-	>=gnome-base/nautilus-3
+	>=gnome-base/gnome-shell-${PV}
+	>=gnome-base/nautilus-${PV}
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/intltool-0.40.0
+	>=dev-util/intltool-0.51.0
 	virtual/pkgconfig
 "
