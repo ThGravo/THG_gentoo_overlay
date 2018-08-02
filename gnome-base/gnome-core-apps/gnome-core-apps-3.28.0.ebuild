@@ -39,7 +39,6 @@ RDEPEND="
 	>=gnome-extra/yelp-${PV}
 
 	>=x11-themes/adwaita-icon-theme-${PV}
-	>=x11-themes/gnome-themes-extra-3.28
 
 	bluetooth? ( >=net-wireless/gnome-bluetooth-${PV} )
 	cdr? ( >=app-cdr/brasero-${PV} )
